@@ -1,13 +1,25 @@
 pipeline{
     agent any
-    tools{
-        jdk 'jdk-17'
-        nodejs 'Node16'
-    }
     environment {
         SCANNER_HOME=tool 'sonar-scanner'
     }
     stages {
+        stage ('install jdk') {
+            steps {
+                sh 'sudo apt-get install openjdk-17-jdk -y'
+                sh 'java -version'
+            }
+        }
+        stage ('install nodesjs') {
+            steps {
+                sh 'sudo apt-get install nodejs -y'
+                sh 'node -v'
+                sh 'sudo apt-get install npm -y'
+                sh 'npm -v'
+                sh 'sudo npm install -g npm@latest'
+            }
+        }
+
         stage('clean workspace'){
             steps{
                 cleanWs()
@@ -40,7 +52,7 @@ pipeline{
         }
         stage('OWASP FS SCAN') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP'
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'OWASP-DC'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
