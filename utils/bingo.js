@@ -53,7 +53,7 @@ export const createCartela = (amount, cartelas) => {
       cartela.push(numbers[riffled]);
       numbers.splice(riffled, 1);
     }
-  } while (typeof cartelas.find((el) => el == cartela) === undefined);
+  } while (typeof cartelas.find((el) => el == cartela) === "undefined");
 
   return cartela;
 };
