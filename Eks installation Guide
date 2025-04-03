@@ -1,7 +1,7 @@
 How to create an EKS cluster using AWS Console | Create node group | Configure Kubernetes cluster
 
 
-# Step - 1 : Create EKS Management Host in AWS #
+# Step - 1 : Create EKS Management Host in AWS
 
 
 #To install an EKS (Elastic Kubernetes Service) cluster with 2 nodes in AWS, follow these steps:
