@@ -20,7 +20,7 @@ export default function Index() {
       return (
         <>
           <Head>
-            <title>Bingo! - Create Room</title>
+            <title>Bingo! - Create Area</title>
           </Head>
           <HostScreen content={content.en.createRoom} path={handlePath} />
         </>
